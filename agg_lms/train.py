@@ -40,7 +40,10 @@ class LanguageModelTrainingModule(pl.LightningModule):
         logits = logits[:, :-1]
         target_tokens = tokens[:, 1:]
         loss = F.cross_entropy(
-            logits, target_tokens, ignore_index=-100, reduction="mean"
+            logits.reshape(-1, self.model.predictor.d_vocab), 
+            target_tokens.reshape(-1), 
+            ignore_index=-100, 
+            reduction="mean"
         )
         return loss
 

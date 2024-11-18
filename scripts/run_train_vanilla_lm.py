@@ -45,11 +45,12 @@ def train_model(
 
 if __name__ == "__main__":
 
-    wandb_logger = WandbLogger(
-        project="agg-lms",
-        entity="dtch1997",
-        group="vanilla-lm",
-    )
+    # logger = WandbLogger(
+    #     project="agg-lms",
+    #     entity="dtch1997",
+    #     group="vanilla-lm",
+    # )
+    logger = None
 
     gpt_config = GPTConfig(
         # Hardcoded for c4_code dataset
@@ -71,6 +72,8 @@ if __name__ == "__main__":
             d_vocab=gpt_config.vocab_size,
         ),
     )
+
+    model = torch.compile(model)
 
     # NOTE: Warmup iters math
     # - We want to warmup for 300M tokens to match Gelu-2L
@@ -96,7 +99,7 @@ if __name__ == "__main__":
         lightning_module,
         train_dataset,
         val_dataset=val_dataset,
-        logger=wandb_logger,
+        logger=logger,
         max_epochs=max_epochs,
         batch_size=32,
         num_workers=4,
