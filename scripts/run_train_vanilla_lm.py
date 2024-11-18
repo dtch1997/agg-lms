@@ -45,12 +45,12 @@ def train_model(
 
 if __name__ == "__main__":
 
-    # logger = WandbLogger(
-    #     project="agg-lms",
-    #     entity="dtch1997",
-    #     group="vanilla-lm",
-    # )
-    logger = None
+    logger = WandbLogger(
+        project="agg-lms",
+        entity="dtch1997",
+        group="vanilla-lm",
+    )
+    # logger = None
 
     gpt_config = GPTConfig(
         # Hardcoded for c4_code dataset
