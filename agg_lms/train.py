@@ -106,15 +106,13 @@ class LanguageModelTrainingModule(pl.LightningModule):
         }
 
 def train_model(
-    model: Model,
+    lightning_module: LanguageModelTrainingModule,
     train_dataset: torch.utils.data.Dataset,
     val_dataset: torch.utils.data.Dataset | None = None,
     max_epochs: int = 10,
     batch_size: int = 32,
     num_workers: int = 4,
-    **kwargs
 ):
-    lightning_model = LanguageModelTrainingModule(model, **kwargs)
     trainer = pl.Trainer(
         max_epochs=max_epochs,
         accelerator="auto",
@@ -138,5 +136,5 @@ def train_model(
             num_workers=num_workers
         )
     
-    trainer.fit(lightning_model, train_loader, val_loader)
-    return lightning_model
+    trainer.fit(lightning_module, train_loader, val_loader)
+    return lightning_module
