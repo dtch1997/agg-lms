@@ -1,11 +1,56 @@
+import torch
+import pytorch_lightning as pl
+from torch.utils.data import Dataset
+
 from agg_lms.core import Model
 from agg_lms.backbone.gpt import GPT, GPTConfig
 from agg_lms.predictor import LastLayerPredictor
-from agg_lms.train import LanguageModelTrainingModule, train_model
+from agg_lms.train import LanguageModelTrainingModule
 from agg_lms.datasets.registry import make_c4_code_dataset
 from agg_lms.utils import train_val_test_split
 
+from pytorch_lightning.loggers import Logger, WandbLogger
+
+
+def train_model(
+    lightning_module: LanguageModelTrainingModule,
+    train_dataset: Dataset,
+    val_dataset: Dataset | None = None,
+    logger: Logger | None = None,
+    max_epochs: int = 10,
+    batch_size: int = 32,
+    num_workers: int = 4,
+):
+    trainer = pl.Trainer(
+        max_epochs=max_epochs,
+        accelerator="auto",
+        devices="auto",
+        gradient_clip_val=1.0,
+        logger=logger,
+    )
+
+    train_loader = torch.utils.data.DataLoader(
+        train_dataset, batch_size=batch_size, shuffle=True, num_workers=num_workers
+    )
+
+    val_loader = None
+    if val_dataset is not None:
+        val_loader = torch.utils.data.DataLoader(
+            val_dataset, batch_size=batch_size, shuffle=False, num_workers=num_workers
+        )
+
+    trainer.fit(lightning_module, train_loader, val_loader)
+    return lightning_module
+
+
 if __name__ == "__main__":
+
+    wandb_logger = WandbLogger(
+        project="agg-lms",
+        entity="dtch1997",
+        group="vanilla-lm",
+    )
+
     gpt_config = GPTConfig(
         # Hardcoded for c4_code dataset
         block_size=1024,
@@ -50,7 +95,8 @@ if __name__ == "__main__":
     train_model(
         lightning_module,
         train_dataset,
-        val_dataset,
+        val_dataset=val_dataset,
+        logger=wandb_logger,
         max_epochs=max_epochs,
         batch_size=32,
         num_workers=4,

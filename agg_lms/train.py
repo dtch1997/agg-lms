@@ -84,29 +84,3 @@ class LanguageModelTrainingModule(pl.LightningModule):
         )
 
         return [optimizer], [scheduler]
-
-
-def train_model(
-    lightning_module: LanguageModelTrainingModule,
-    train_dataset: Dataset,
-    val_dataset: Dataset | None = None,
-    max_epochs: int = 10,
-    batch_size: int = 32,
-    num_workers: int = 4,
-):
-    trainer = pl.Trainer(
-        max_epochs=max_epochs, accelerator="auto", devices="auto", gradient_clip_val=1.0
-    )
-
-    train_loader = torch.utils.data.DataLoader(
-        train_dataset, batch_size=batch_size, shuffle=True, num_workers=num_workers
-    )
-
-    val_loader = None
-    if val_dataset is not None:
-        val_loader = torch.utils.data.DataLoader(
-            val_dataset, batch_size=batch_size, shuffle=False, num_workers=num_workers
-        )
-
-    trainer.fit(lightning_module, train_loader, val_loader)
-    return lightning_module
