@@ -15,7 +15,7 @@ class LastLayerPredictor(Predictor):
         self.unembedding = nn.Linear(self.d_model, self.d_vocab)
         self.layernorm = nn.LayerNorm(self.d_model)
 
-    def __call__(self, residual_acts: ResidualActs) -> LogitActs:
+    def get_prediction(self, residual_acts: ResidualActs) -> LogitActs:
         normed_residual_acts = self.layernorm(residual_acts[..., -1, :])
         return self.unembedding(normed_residual_acts)
     
@@ -32,7 +32,7 @@ class WeightedPredictor(Predictor):
     def normalised_coefficients(self):
         return self.coefficients / self.coefficients.sum()
 
-    def __call__(self, residual_acts: ResidualActs) -> LogitActs:
+    def get_prediction(self, residual_acts: ResidualActs) -> LogitActs:
         normed_residual_acts = self.layernorm(residual_acts)
         weighted_residual_acts = einsum(
             self.normalised_coefficients, 
@@ -54,7 +54,7 @@ class WeightedPerLayerPredictor(Predictor):
     def normalised_coefficients(self):
         return self.coefficients / self.coefficients.sum()
     
-    def __call__(self, residual_acts: ResidualActs) -> LogitActs:
+    def get_prediction(self, residual_acts: ResidualActs) -> LogitActs:
         normed_residual_acts = self.layernorm(residual_acts)
         # Weight the layer-wise activations
         weighted_residual_acts = einsum(

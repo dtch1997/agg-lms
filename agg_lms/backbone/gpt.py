@@ -42,7 +42,10 @@ class GPTBlock(nn.Module):
 class GPT(Backbone):
 
     def __init__(self, config: GPTConfig):
-        super().__init__()
+        super().__init__(
+            d_model=config.n_embd,
+            n_layer=config.n_layer
+        )
         assert config.vocab_size is not None
         assert config.block_size is not None
         self.config = config

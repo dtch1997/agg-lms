@@ -7,6 +7,7 @@ from jaxtyping import Float, Int
 Tokens = Int[Tensor, "..."]
 ResidualActs = Float[Tensor, "... n_layer d_model"]
 LogitActs = Float[Tensor, "... d_vocab"]
+Loss = Float[Tensor, "()"]
 
 class Backbone(abc.ABC, nn.Module):
     """ Abstract base class for a backbone """
@@ -44,6 +45,15 @@ class Predictor(abc.ABC, nn.Module):
         NOTE: Needs to be differentiable! """
         pass
 
-class Model(abc.ABC, nn.Module):
+class Model(nn.Module):
     backbone: Backbone
     predictor: Predictor
+
+    def __init__(self, backbone: Backbone, predictor: Predictor):
+        super().__init__()
+        self.backbone = backbone
+        self.predictor = predictor
+
+    def forward(self, tokens: Tokens) -> LogitActs:
+        residual_acts = self.backbone.get_residual_acts(tokens)
+        return self.predictor.get_prediction(residual_acts)
