@@ -4,6 +4,11 @@ from torch.utils.data import random_split
 from agg_lms.core import Dataset
 
 
+def print_gpu_utilization():
+    """Print GPU utilization"""
+    print(torch.cuda.memory_summary(device="cuda", abbreviated=False))
+
+
 def train_val_test_split(
     ds: Dataset,
     train_frac: float = 0.4,
