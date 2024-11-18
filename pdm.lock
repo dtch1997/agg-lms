@@ -5,10 +5,28 @@
 groups = ["default"]
 strategy = []
 lock_version = "4.5.0"
-content_hash = "sha256:f98f889daf5a0cacc80891982fa0a039791bec505439d995cd9b9bb2a3f2f791"
+content_hash = "sha256:8b4a017bd6dbd64ccf150e19c3c734190e322ec14dfe0b5d4af3626535db0421"
 
 [[metadata.targets]]
 requires_python = ">=3.11"
+
+[[package]]
+name = "accelerate"
+version = "1.1.1"
+summary = ""
+dependencies = [
+    "huggingface-hub",
+    "numpy",
+    "packaging",
+    "psutil",
+    "pyyaml",
+    "safetensors",
+    "torch",
+]
+files = [
+    {file = "accelerate-1.1.1-py3-none-any.whl", hash = "sha256:61edd81762131b8d4bede008643fa1e1f3bf59bec710ebda9771443e24feae02"},
+    {file = "accelerate-1.1.1.tar.gz", hash = "sha256:0d39dfac557052bc735eb2703a0e87742879e1e40b88af8a2f9a93233d4cd7db"},
+]
 
 [[package]]
 name = "aiohappyeyeballs"
@@ -121,6 +139,24 @@ summary = ""
 files = [
     {file = "attrs-24.2.0-py3-none-any.whl", hash = "sha256:81921eb96de3191c8258c199618104dd27ac608d9366f5e35d011eae1867ede2"},
     {file = "attrs-24.2.0.tar.gz", hash = "sha256:5cfb1b9148b5b086569baec03f20d7b6bf3bcacc9a42bebf87ffaaca362f6346"},
+]
+
+[[package]]
+name = "beartype"
+version = "0.14.1"
+summary = ""
+files = [
+    {file = "beartype-0.14.1-py3-none-any.whl", hash = "sha256:0f70fccdb8eb6d7ddfaa3ffe3a0b66cf2edeb13452bd71ad46615775c2fa34f6"},
+    {file = "beartype-0.14.1.tar.gz", hash = "sha256:23df4715d19cebb2ce60e53c3cf44cd925843f00c71938222d777ea6332de3cb"},
+]
+
+[[package]]
+name = "better-abc"
+version = "0.0.3"
+summary = ""
+files = [
+    {file = "better-abc-0.0.3.tar.gz", hash = "sha256:a880fd6bc9675da2ec991e8712a555bffa0f12722efed78c739f78343cf989f6"},
+    {file = "better_abc-0.0.3-py3-none-any.whl", hash = "sha256:3ae73b473fbeb536a548f542984976e80b821676ae6e18f14e24d8e180647187"},
 ]
 
 [[package]]
@@ -356,6 +392,15 @@ summary = ""
 files = [
     {file = "executing-2.1.0-py2.py3-none-any.whl", hash = "sha256:8d63781349375b5ebccc3142f4b30350c0cd9c79f921cde38be2be4637e98eaf"},
     {file = "executing-2.1.0.tar.gz", hash = "sha256:8ea27ddd260da8150fa5a708269c4a10e76161e2496ec3e587da9e3c0fe4b9ab"},
+]
+
+[[package]]
+name = "fancy-einsum"
+version = "0.0.3"
+summary = ""
+files = [
+    {file = "fancy_einsum-0.0.3-py3-none-any.whl", hash = "sha256:e0bf33587a61822b0668512ada237a0ffa5662adfb9acfcbb0356ee15a0396a1"},
+    {file = "fancy_einsum-0.0.3.tar.gz", hash = "sha256:05ca6689999d0949bdaa5320c81117effa13644ec68a200121e93d7ebf3d3356"},
 ]
 
 [[package]]
@@ -621,6 +666,18 @@ files = [
 ]
 
 [[package]]
+name = "markdown-it-py"
+version = "3.0.0"
+summary = ""
+dependencies = [
+    "mdurl",
+]
+files = [
+    {file = "markdown-it-py-3.0.0.tar.gz", hash = "sha256:e3f60a94fa066dc52ec76661e37c851cb232d92f9886b15cb560aaada2df8feb"},
+    {file = "markdown_it_py-3.0.0-py3-none-any.whl", hash = "sha256:355216845c60bd96232cd8d8c40e8f9765cc86f46880e43a8fd22dc1a1a8cab1"},
+]
+
+[[package]]
 name = "markupsafe"
 version = "3.0.2"
 summary = ""
@@ -678,6 +735,15 @@ dependencies = [
 files = [
     {file = "matplotlib_inline-0.1.7-py3-none-any.whl", hash = "sha256:df192d39a4ff8f21b1895d72e6a13f5fcc5099f00fa84384e0ea28c2cc0653ca"},
     {file = "matplotlib_inline-0.1.7.tar.gz", hash = "sha256:8423b23ec666be3d16e16b60bdd8ac4e86e840ebd1dd11a30b9f117f2fa0ab90"},
+]
+
+[[package]]
+name = "mdurl"
+version = "0.1.2"
+summary = ""
+files = [
+    {file = "mdurl-0.1.2-py3-none-any.whl", hash = "sha256:84008a41e51615a49fc9966191ff91509e3c40b939176e643fd50a5c2196b8f8"},
+    {file = "mdurl-0.1.2.tar.gz", hash = "sha256:bb413d29f5eea38f31dd4754dd7377d4465116fb207585f97bf925588687c1ba"},
 ]
 
 [[package]]
@@ -1410,6 +1476,19 @@ files = [
 ]
 
 [[package]]
+name = "rich"
+version = "13.9.4"
+summary = ""
+dependencies = [
+    "markdown-it-py",
+    "pygments",
+]
+files = [
+    {file = "rich-13.9.4-py3-none-any.whl", hash = "sha256:6049d5e6ec054bf2779ab3358186963bac2ea89175919d699e378b99738c2a90"},
+    {file = "rich-13.9.4.tar.gz", hash = "sha256:439594978a49a09530cff7ebc4b5c7103ef57baf48d5ea3184f21d9a2befa098"},
+]
+
+[[package]]
 name = "safetensors"
 version = "0.4.5"
 summary = ""
@@ -1449,6 +1528,30 @@ files = [
     {file = "safetensors-0.4.5-cp313-cp313-musllinux_1_1_aarch64.whl", hash = "sha256:67e1e7cb8678bb1b37ac48ec0df04faf689e2f4e9e81e566b5c63d9f23748523"},
     {file = "safetensors-0.4.5-cp313-cp313-musllinux_1_1_x86_64.whl", hash = "sha256:dbd280b07e6054ea68b0cb4b16ad9703e7d63cd6890f577cb98acc5354780142"},
     {file = "safetensors-0.4.5.tar.gz", hash = "sha256:d73de19682deabb02524b3d5d1f8b3aaba94c72f1bbfc7911b9b9d5d391c0310"},
+]
+
+[[package]]
+name = "sentencepiece"
+version = "0.2.0"
+summary = ""
+files = [
+    {file = "sentencepiece-0.2.0-cp311-cp311-macosx_10_9_universal2.whl", hash = "sha256:17982700c4f6dbb55fa3594f3d7e5dd1c8659a274af3738e33c987d2a27c9d5c"},
+    {file = "sentencepiece-0.2.0-cp311-cp311-macosx_10_9_x86_64.whl", hash = "sha256:7c867012c0e8bcd5bdad0f791609101cb5c66acb303ab3270218d6debc68a65e"},
+    {file = "sentencepiece-0.2.0-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:7fd6071249c74f779c5b27183295b9202f8dedb68034e716784364443879eaa6"},
+    {file = "sentencepiece-0.2.0-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:27f90c55a65013cbb8f4d7aab0599bf925cde4adc67ae43a0d323677b5a1c6cb"},
+    {file = "sentencepiece-0.2.0-cp311-cp311-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:b293734059ef656dcd65be62ff771507bea8fed0a711b6733976e1ed3add4553"},
+    {file = "sentencepiece-0.2.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:e58b47f933aca74c6a60a79dcb21d5b9e47416256c795c2d58d55cec27f9551d"},
+    {file = "sentencepiece-0.2.0-cp311-cp311-win32.whl", hash = "sha256:c581258cf346b327c62c4f1cebd32691826306f6a41d8c4bec43b010dee08e75"},
+    {file = "sentencepiece-0.2.0-cp311-cp311-win_amd64.whl", hash = "sha256:0993dbc665f4113017892f1b87c3904a44d0640eda510abcacdfb07f74286d36"},
+    {file = "sentencepiece-0.2.0-cp312-cp312-macosx_10_9_universal2.whl", hash = "sha256:ea5f536e32ea8ec96086ee00d7a4a131ce583a1b18d130711707c10e69601cb2"},
+    {file = "sentencepiece-0.2.0-cp312-cp312-macosx_10_9_x86_64.whl", hash = "sha256:d0cb51f53b6aae3c36bafe41e86167c71af8370a039f542c43b0cce5ef24a68c"},
+    {file = "sentencepiece-0.2.0-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:3212121805afc58d8b00ab4e7dd1f8f76c203ddb9dc94aa4079618a31cf5da0f"},
+    {file = "sentencepiece-0.2.0-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:2a3149e3066c2a75e0d68a43eb632d7ae728c7925b517f4c05c40f6f7280ce08"},
+    {file = "sentencepiece-0.2.0-cp312-cp312-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:632f3594d3e7ac8b367bca204cb3fd05a01d5b21455acd097ea4c0e30e2f63d7"},
+    {file = "sentencepiece-0.2.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:f295105c6bdbb05bd5e1b0cafbd78ff95036f5d3641e7949455a3f4e5e7c3109"},
+    {file = "sentencepiece-0.2.0-cp312-cp312-win32.whl", hash = "sha256:fb89f811e5efd18bab141afc3fea3de141c3f69f3fe9e898f710ae7fe3aab251"},
+    {file = "sentencepiece-0.2.0-cp312-cp312-win_amd64.whl", hash = "sha256:7a673a72aab81fef5ebe755c6e0cc60087d1f3a4700835d40537183c1703a45f"},
+    {file = "sentencepiece-0.2.0.tar.gz", hash = "sha256:a52c19171daaf2e697dc6cbe67684e0fa341b1248966f6aebb541de654d15843"},
 ]
 
 [[package]]
@@ -1728,6 +1831,33 @@ summary = ""
 files = [
     {file = "traitlets-5.14.3-py3-none-any.whl", hash = "sha256:b74e89e397b1ed28cc831db7aea759ba6640cb3de13090ca145426688ff1ac4f"},
     {file = "traitlets-5.14.3.tar.gz", hash = "sha256:9ed0579d3502c94b4b3732ac120375cda96f923114522847de4b3bb98b96b6b7"},
+]
+
+[[package]]
+name = "transformer-lens"
+version = "2.9.0"
+summary = ""
+dependencies = [
+    "accelerate",
+    "beartype",
+    "better-abc",
+    "datasets",
+    "einops",
+    "fancy-einsum",
+    "jaxtyping",
+    "numpy; python_full_version < \"3.13\"",
+    "pandas",
+    "rich",
+    "sentencepiece",
+    "torch",
+    "tqdm",
+    "transformers",
+    "typing-extensions",
+    "wandb",
+]
+files = [
+    {file = "transformer_lens-2.9.0-py3-none-any.whl", hash = "sha256:6eed8170999f86bd5a7e9b99d5b07544080d8946d20a2a69e17ee2bc398f6ede"},
+    {file = "transformer_lens-2.9.0.tar.gz", hash = "sha256:cdbad53a8c9a18d6a4e47bd1ee43d5e5ceac92c0bee44830023087b59e54417f"},
 ]
 
 [[package]]
